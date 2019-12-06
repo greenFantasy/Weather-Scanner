@@ -45,14 +45,27 @@ class App extends React.Component {
     // Store city and country values based on current value in form
     const city = e.target.elements.city.value;
     const country = e.target.elements.country.value;
+    const zip = e.target.elements.zip.value;
     e.preventDefault();
     // fetch keyword for API call, await to show it's asynchronous,
     // URL defined at https://openweathermap.org/current
-    const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&units=imperial&appid=${Api_Key}`);
+    var api_call = undefined;
+    if (city !== "") {
+        api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&units=imperial&appid=${Api_Key}`);
+    } else {
+        api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?zip=${zip}&units=imperial&appid=${Api_Key}`);
+    }
+
     // response stored as json in `response` variable
     const response = await api_call.json();
     console.log(response);
-    if(city && country){
+    var valid_data = true;
+    try {
+      if (response.main.temp) {}
+    } catch (err) {
+      valid_data = false;
+    }
+    if(valid_data){
       this.setState({
         temperature: response.main.temp,
         city: response.name,
@@ -66,7 +79,7 @@ class App extends React.Component {
       })
     }else{
       this.setState({
-        error: "Please input right search values..."
+        error: "No data found. Please input different values."
       })
     }
   }
