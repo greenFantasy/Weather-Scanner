@@ -12,33 +12,51 @@ class Weather extends React.Component{
 
             <div className="weather-info">
                 {
-                    this.props.country && this.props.city && <p className="weather__key">Location: 
-                        <span className="weather__value">  {this.props.city}, {this.props.country}</span>                    
-                    </p> 
+                    this.props.country && this.props.city && <p className="weather__key">Location:
+                        <span className="weather__value">  {this.props.city}, {this.props.country}</span>
+                    </p>
                 }
-                
+
                 {
-                    this.props.temperature && <p className="weather__key">Temperature: 
+                    this.props.temperature && <p className="weather__key">Temperature:
                         <span className="weather__value">  {this.props.temperature}</span>
                     </p>
                 }
 
                 {
-                    this.props.humidity && <p className="weather__key">Humidity: 
+                    this.props.humidity && <p className="weather__key">Humidity:
                         <span className="weather__value">  {this.props.humidity}</span>
                     </p>
                 }
 
                 {
-                    this.props.description && <p className="weather__key">Conditions:  
+                    this.props.description && <p className="weather__key">Conditions:
                         <span className="weather__value">  {this.props.description}</span>
+                    </p>
+                }
+
+                {
+                    this.props.wind_speed && <p className="weather__key">Wind Speed:
+                        <span className="weather__value">  {this.props.wind_speed}</span>
+                    </p>
+                }
+
+                {
+                    this.props.sunrise && <p className="weather__key">Sunrise:
+                        <span className="weather__value">  {this.props.sunrise}</span>
+                    </p>
+                }
+
+                {
+                    this.props.sunset && <p className="weather__key">Sunset:
+                        <span className="weather__value">  {this.props.sunset}</span>
                     </p>
                 }
 
                 {
                     this.props.error && <p className="weather__error">{this.props.error}</p>
                 }
-        
+
             </div>
         )
     }
