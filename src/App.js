@@ -79,6 +79,14 @@ class App extends React.Component {
       })
     }else{
       this.setState({
+        temperature: undefined,
+        city: undefined,
+        country: undefined,
+        humidity: undefined,
+        description: undefined,
+        wind_speed: undefined,
+        sunrise: undefined,
+        sunset: undefined,
         error: "No data found. Please input different values."
       })
     }
